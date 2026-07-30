@@ -8,7 +8,7 @@ const categories = [
 ];
 
 const menufoods = [
-    
+
     {
         name: "Mexican Rice",
         image: "images/Mexican Rice.png",
@@ -158,16 +158,32 @@ const menufoods = [
 const filterTabs = document.querySelector("#filterTabs");
 const searchInput = document.querySelector("#searchInput");
 const filterGrid = document.querySelector("#filterGrid");
+const cartIcon = document.querySelector("#cartIcon");
+const sidebar = document.querySelector("#sidebar");
+const totalPrice = document.querySelector("#totalPrice");
+const cartContent = document.querySelector("#cartContent");
+const sidebarFooter = document.querySelector("#sidebarFooter");
+const cartBadge = document.querySelector("#cartBadge");
+const cartMessage = document.querySelector("#cartMessage");
+
+cartIcon.addEventListener("click", toggleCart);
+closeBtn.addEventListener("click", toggleCart);
+
+function toggleCart() {
+    sidebar.classList.toggle("open");
+}
+
 let activeCategory = "all";
 
+let cart = [];
 
-function renderCards(){
+function renderCards() {
 
     filterGrid.innerHTML = '';
 
     const searchText = searchInput.value.toLocaleLowerCase();
 
-    const filteredProducts = menufoods.filter(product=>{
+    const filteredProducts = menufoods.filter(product => {
 
         const matchesCategory = activeCategory === "all" || activeCategory === product.category.toLocaleLowerCase();
 
@@ -176,7 +192,7 @@ function renderCards(){
         return matchesCategory && matchesSearch;
     });
 
-    filteredProducts.forEach(product=>{
+    filteredProducts.forEach(product => {
         const card = document.createElement("div");
         card.className = "card";
 
@@ -196,19 +212,80 @@ function renderCards(){
                     </div>
                 </div>
         `;
+        const addBtn = card.querySelector(".addbtn");
+
+        addBtn.addEventListener("click", () => {
+            addToCart(product);
+        })
+
         filterGrid.append(card);
     })
 }
 
+function addToCart(product) {
+    const existingItem = cart.find(item => item.name.toLocaleLowerCase() === product.name.toLocaleLowerCase());
 
-function renderCategories(){
-    categories.forEach(category=>{
+    if (existingItem) {
+        existingItem.quantity++;
+    }
+    else {
+        cart.push({ ...product, quantity: 1 });
+    }
+    updateCart();
+    handleMessage("Food Added To Cart","green");
+    
+}
+
+function updateCart() {
+
+    cartContent.innerHTML = ``;
+
+    cartBadge.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    if(cart.length === 0){
+        cartContent.innerHTML = ' <div class="empty-cart">Your cart is empty</div>';
+        sidebarFooter.style.display = "none";
+        return;
+    }
+
+    let total = 0;
+
+    cart.forEach((product, index) => {
+        total += product.price * product.quantity;
+        const cartItem = document.createElement("div");
+        cartItem.className = "cart-item";
+        cartItem.setAttribute("data-index", index);
+
+        cartItem.innerHTML = `
+        <div class="cart-item-image">
+            <img src="${product.image}" alt="${product.name}">
+        </div>
+        <div class="cart-item-details">
+            <h3 class="cart-item-name">${product.name}</h3>
+            <p class="cart-item-price">$${product.price}</p>
+        <div class="quantity-controls">
+            <button class="qty-btn decrease-btn">-</button>
+            <div class="quantity">${product.quantity}</div>
+            <button class="qty-btn increase-btn">+</button>
+        </div>
+         </div>
+        <button class="remove-btn">&times;</button>`;
+
+        cartContent.append(cartItem);
+    });
+    totalPrice.textContent = `$${total.toFixed(2)}`;
+    sidebarFooter.style.display = "block";
+}
+
+
+function renderCategories() {
+    categories.forEach(category => {
         const button = document.createElement("button");
         button.className = "tab";
         button.setAttribute("data-category", category.toLocaleLowerCase());
         button.innerText = category;
 
-        if(button.dataset.category === "all"){
+        if (button.dataset.category === "all") {
             button.classList.add("active");
         }
 
@@ -217,8 +294,8 @@ function renderCategories(){
 
     const buttons = document.querySelectorAll(".tab");
 
-    buttons.forEach(btn=>{
-        btn.addEventListener("click", ()=>{
+    buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
 
             activeCategory = btn.dataset.category;
 
@@ -230,7 +307,48 @@ function renderCategories(){
     })
 }
 
+cartContent.addEventListener("click", (e)=>{
+
+    const itemDiv = e.target.closest(".cart-item");
+    if(!itemDiv) return;
+
+    const index = Number(itemDiv.dataset.index);
+    
+    if(e.target.classList.contains("increase-btn")){
+        cart[index].quantity++;
+    }
+
+    if(e.target.classList.contains("decrease-btn")){
+        if(cart[index].quantity > 1){
+            cart[index].quantity--;
+        }
+        else{
+            cart.splice(index, 1);
+            handleMessage("Product removed from Cart", "red");
+        }
+    }
+
+    if(e.target.classList.contains("remove-btn")){
+        cart.splice(index, 1);
+        handleMessage("Product removed from Cart", "red");
+    }
+
+    updateCart();
+})
+
+
+function handleMessage(message, color){
+    cartMessage.classList.add("show");
+    cartMessage.textContent = message;
+    cartMessage.style.backgroundColor = color;
+
+    setTimeout(()=>{
+        cartMessage.classList.remove("show");
+    }, 1200)
+}
+
 searchInput.addEventListener("input", renderCards);
 
 renderCategories();
 renderCards();
+updateCart();
