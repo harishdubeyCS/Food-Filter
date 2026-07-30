@@ -1,17 +1,22 @@
-# 🍔 Food Filter - Search & Filter Food Menu
+# 🍔 Food Filter – Search, Filter & Cart Food Menu
 
-A responsive Food Filter web application built using **HTML, CSS, and JavaScript**. Users can quickly search food items by name and filter them by category for a smooth restaurant menu browsing experience.
+A responsive **Food Filter and Cart web application** built using **HTML, CSS, and JavaScript**. Users can search food items, filter them by category, add products to the cart, update quantities, and view the total price in a modern sidebar cart interface.
 
 ## 🚀 Features
 
-* 🔍 Live Search by food name
-* 🍕 Category-based filtering
-* ⭐ Food rating display
-* 💰 Food price display
-* 📱 Responsive card layout
-* 🎨 Clean and modern UI
-* ⚡ Fast filtering using JavaScript
-* 🖼️ Food images with object-fit support
+* 🔍 **Live Search** by food name
+* 🍕 **Category-based filtering**
+* 🛒 **Add to Cart** functionality
+* ➕ **Increase / Decrease quantity**
+* 🗑️ **Remove items from cart**
+* 💰 **Dynamic total price calculation**
+* 🔢 **Cart item badge counter**
+* 📱 **Responsive card layout**
+* 🎨 **Modern dark UI with gold accents**
+* ⭐ **Food rating display**
+* 🍽️ **Sidebar shopping cart**
+* ⚡ **Instant filtering using JavaScript**
+* 🔔 **Toast notifications** for cart actions
 
 ## 🛠️ Technologies Used
 
@@ -31,10 +36,13 @@ FoodFilter/
 │   └── js.js
 │── images/
 │   ├── chickenBiryani.png
-│   ├── Lasagna.png
-│   ├── PepperoniPizza.png
-│   ├── Mojito.png
+│   ├── pepperoniPizza.png
+│   ├── mojito.png
+│   ├── sushiRolls.png
 │   └── ...
+│── preview/
+│   ├── preview1.png
+│   └── preview2.png
 ```
 
 ## 🍽️ Available Categories
@@ -46,39 +54,68 @@ FoodFilter/
 * Japanese
 * Drinks
 
-## 🔥 Current Features
+## 🛒 Cart Features
 
-* Search food instantly
-* Filter menu by category
-* Dynamic card generation
-* Rating using Font Awesome icons
-* Modern UI with hover effects
+* Add food items to cart
+* Automatically increase quantity for existing items
+* Increase / decrease quantity
+* Remove items completely
+* Real-time cart badge updates
+* Real-time total price updates
+* Empty cart state
+* Sidebar cart toggle
+* Toast messages for add/remove actions
+
+## ⚡ How It Works
+
+1. Search food using the search bar.
+2. Filter food by category.
+3. Click **Add To Cart**.
+4. Open the cart sidebar.
+5. Update quantity or remove items.
+6. View the total price instantly.
+
+## 🔥 Current Functionalities
+
+* Dynamic food card rendering
+* Search + category filtering
+* Cart sidebar
+* Quantity management
+* Total price calculation
+* Cart badge counter
+* Toast notifications
+* Responsive food cards
+* Font Awesome ratings
 
 ## 📌 Future Improvements
 
-* 🛒 Add to Cart
-* ➕ Increase / Decrease Quantity
-* 🗑️ Remove Items
-* 💳 Checkout Page
+* 💳 Checkout page
 * ❤️ Wishlist
-* 🌙 Dark / Light Theme
+* 🌙 Dark / Light theme toggle
 * 🔀 Sorting (Price & Rating)
-* 📱 Fully Responsive Design
-* 💾 Local Storage
-* 🍔 Food Details Popup
+* 💾 Local Storage (persist cart)
+* 📱 Fully responsive mobile optimization
+* 🍔 Food details popup
+* 🔐 User authentication
+* 📦 Order history
 
 ## 📸 Preview
 
-![Food Filter](preview/preview1.png)
+### Home Page
+![Home Page](preview/preview1.png)
 
----
+### Search Functionality
+![Search](preview/preview2.png)
+
+### Food Cart
+![Cart Sidebar](preview/preview3.png)
 
 ## 👨‍💻 Author
 
-Harish Dubey
+**Harish Dubey**
 
 GitHub: https://github.com/harishdubeyCS
 
 ---
 
-⭐ If you like this project, don't forget to give it a Star.
+⭐ If you like this project, consider giving it a **Star** on GitHub.
