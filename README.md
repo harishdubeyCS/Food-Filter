@@ -87,9 +87,7 @@ FoodFilter/
 * Responsive food cards
 * Font Awesome ratings
 
-
-'''
-✨ Future Improvements
+## ✨ Future Improvements
 
 💾 LocalStorage
 
@@ -124,7 +122,6 @@ Added a theme toggle that allows users to switch between:
 
 The selected theme is saved using LocalStorage and remains active after refreshing the page.
 
-'''
 
 ## 📸 Preview
 
