@@ -87,17 +87,44 @@ FoodFilter/
 * Responsive food cards
 * Font Awesome ratings
 
-## 📌 Future Improvements
 
-* 💳 Checkout page
-* ❤️ Wishlist
-* 🌙 Dark / Light theme toggle
-* 🔀 Sorting (Price & Rating)
-* 💾 Local Storage (persist cart)
-* 📱 Fully responsive mobile optimization
-* 🍔 Food details popup
-* 🔐 User authentication
-* 📦 Order history
+'''
+✨ Future Improvements
+
+💾 LocalStorage
+
+Cart and wishlist data are saved using LocalStorage, so the user's data remains available even after refreshing the page.
+
+🔀 Sorting
+
+Food items can now be sorted using different options:
+
+💰 Price: Low → High
+💰 Price: High → Low
+⭐ Rating: High → Low
+🔤 Name: A → Z
+
+Sorting works together with search and category filtering.
+
+❤️ Wishlist
+
+Users can add their favorite food items to a wishlist.
+
+Add food to wishlist
+Remove food from wishlist
+Wishlist data saved in LocalStorage
+Wishlist remains available after page refresh
+Wishlist counter
+🌙☀️ Dark / Light Mode
+
+Added a theme toggle that allows users to switch between:
+
+🌙 Dark Mode
+☀️ Light Mode
+
+The selected theme is saved using LocalStorage and remains active after refreshing the page.
+
+'''
 
 ## 📸 Preview
 
