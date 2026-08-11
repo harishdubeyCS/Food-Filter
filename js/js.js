@@ -175,7 +175,11 @@ function toggleCart() {
 
 let activeCategory = "all";
 
-let cart = [];
+let cart =  JSON.parse(localStorage.getItem("foodCart")) || [];
+
+function saveCart() {
+    localStorage.setItem("foodCart", JSON.stringify(cart));
+}
 
 function renderCards() {
 
@@ -237,6 +241,8 @@ function addToCart(product) {
 }
 
 function updateCart() {
+
+    saveCart();
 
     cartContent.innerHTML = ``;
 
