@@ -86,12 +86,9 @@ FoodFilter/
 * Toast notifications
 * Responsive food cards
 * Font Awesome ratings
+* Local Storage Functionality
 
 ## ✨ Future Improvements
-
-💾 LocalStorage
-
-Cart and wishlist data are saved using LocalStorage, so the user's data remains available even after refreshing the page.
 
 🔀 Sorting
 
